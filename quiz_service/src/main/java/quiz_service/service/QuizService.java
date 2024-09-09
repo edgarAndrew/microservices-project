@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import quiz_service.DTO.GenericResponse;
 import quiz_service.DTO.GetQuizResponse;
 import quiz_service.exceptions.QuizAlreadyRegisteredException;
 import quiz_service.exceptions.ResourceNotFoundException;
@@ -27,9 +28,9 @@ public class QuizService {
     private final QuizQuestionsRepository quizQuestionsRepository;
     private final QuizRegistrationRepository quizRegistrationRepository;
     private  final QuestionClient questionClient;
+    private final ResultClient resultClient;
 
-    @Value("${user.student.key}")
-    private String studentKey;
+
 
     @Value("${results_service_url}")
     private String results_service_url;
@@ -37,11 +38,12 @@ public class QuizService {
     @Autowired
     private RestTemplate restTemplate;
 
-    public QuizService(QuizRepository quizRepository,QuizQuestionsRepository quizQuestionsRepository,QuizRegistrationRepository quizRegistrationRepository,QuestionClient questionClient){
+    public QuizService(QuizRepository quizRepository,QuizQuestionsRepository quizQuestionsRepository,QuizRegistrationRepository quizRegistrationRepository,QuestionClient questionClient,ResultClient resultClient){
         this.quizRepository = quizRepository;
         this.quizQuestionsRepository = quizQuestionsRepository;
         this.quizRegistrationRepository = quizRegistrationRepository;
         this.questionClient = questionClient;
+        this.resultClient = resultClient;
     }
 
     //Method to add questions to a quiz
@@ -132,29 +134,14 @@ public class QuizService {
         }
 
         // calling another microservice
+        ResponseEntity<GenericResponse> responseEntity = resultClient.registerUserForQuiz(userId, quizId);
 
-        String url = String.format(results_service_url+"?userId=%d&quizId=%d", userId, quizId); ;
-
-        // Authorization token
-        String token = studentKey;
-
-        // Create headers
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.set("Authorization", token);
-
-        // Create the request entity (headers only, no body)
-        HttpEntity<String> requestEntity = new HttpEntity<>(null, headers);
-
-        // Send the POST request
-        ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.POST, requestEntity, String.class);
-
-        if(responseEntity.getStatusCode().value() != 201)
+        if (responseEntity.getStatusCode().value() != 200) {
             throw new ResourceNotFoundException("A problem has occurred with the results microservice");
+        }
 
         // Output the status code and response
-//        System.out.println("Status Code: " + responseEntity.getStatusCode());
-//        System.out.println("Response Body: " + responseEntity.getBody());
+
 
         QuizRegistration quizRegistration = new QuizRegistration(quizId,userId,LocalDate.now().format(formatter));
         quizRegistrationRepository.save(quizRegistration);
