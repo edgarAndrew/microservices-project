@@ -1,11 +1,8 @@
 package quiz_service.service;
 
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 import quiz_service.DTO.GenericResponse;
 import quiz_service.DTO.GetQuizResponse;
 import quiz_service.exceptions.QuizAlreadyRegisteredException;
@@ -30,13 +27,6 @@ public class QuizService {
     private  final QuestionClient questionClient;
     private final ResultClient resultClient;
 
-
-
-    @Value("${results_service_url}")
-    private String results_service_url;
-
-    @Autowired
-    private RestTemplate restTemplate;
 
     public QuizService(QuizRepository quizRepository,QuizQuestionsRepository quizQuestionsRepository,QuizRegistrationRepository quizRegistrationRepository,QuestionClient questionClient,ResultClient resultClient){
         this.quizRepository = quizRepository;
