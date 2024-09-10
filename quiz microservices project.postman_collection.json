@@ -1,0 +1,595 @@
+{
+	"info": {
+		"_postman_id": "561892fb-13a1-4469-b8a2-a7d91528d7e6",
+		"name": "quiz microservices project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24371326"
+	},
+	"item": [
+		{
+			"name": "quiz service",
+			"item": [
+				{
+					"name": "add quiz details",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "+8vJ1NGW6MAmk46t1HTy1GYg09UvT0/HlluCTg7LF0tzKQ5Y1PxwJ1W98VRC7U86",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Sample Quiz 99\",\r\n    \"description\": \"This is a sample quiz\",\r\n    \"quizDate\":\"25-10-2024\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9090/api/v1/quiz",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"api",
+								"v1",
+								"quiz"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update quiz",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "+8vJ1NGW6MAmk46t1HTy1GYg09UvT0/HlluCTg7LF0tzKQ5Y1PxwJ1W98VRC7U86",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Sample Quiz 3\",\r\n    \"description\": \"This is a sample quiz\",\r\n    \"quizDate\":\"10-07-2024\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9090/api/v1/quiz?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"api",
+								"v1",
+								"quiz"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get quizzes",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "+8vJ1NGW6MAmk46t1HTy1GYg09UvT0/HlluCTg7LF0tzKQ5Y1PxwJ1W98VRC7U86",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "W/buObaOUFiwN6yOXgxo6kpSOY/KhKN5EZPjWHlxGi24+9ltnyegbMwLXV8f+nA7",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9090/api/v1/quiz",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"api",
+								"v1",
+								"quiz"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete quiz",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "+8vJ1NGW6MAmk46t1HTy1GYg09UvT0/HlluCTg7LF0tzKQ5Y1PxwJ1W98VRC7U86",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/api/v1/quiz?id=52",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"api",
+								"v1",
+								"quiz"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "52"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add quiz questions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"quizId\":1,\r\n    \"questionId\":[1,2,3,4,5]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9090/api/v1/quiz/add-questions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"api",
+								"v1",
+								"quiz",
+								"add-questions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get quiz",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/api/v1/quiz/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"api",
+								"v1",
+								"quiz",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register for quiz",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "uVnxx815xBweBvGNIUth41QGDVcrntX7KmAT/QJzcXurgt69BHvLis7kMbDjwr0q",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\":4,\r\n    \"quizId\":152\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9090/api/v1/registration",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"api",
+								"v1",
+								"registration"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "question service",
+			"item": [
+				{
+					"name": "add question",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"description\": \"What is the capital city of Japan?\",\r\n        \"options\": \"{\\\"a\\\":\\\"Tokyo\\\", \\\"b\\\":\\\"Beijing\\\", \\\"c\\\":\\\"Seoul\\\", \\\"d\\\":\\\"Bangkok\\\"}\",\r\n        \"answer\": \"a\"\r\n    },\r\n    {\r\n        \"description\": \"Which element has the atomic number 1?\",\r\n        \"options\": \"{\\\"a\\\":\\\"Helium\\\", \\\"b\\\":\\\"Oxygen\\\", \\\"c\\\":\\\"Hydrogen\\\", \\\"d\\\":\\\"Nitrogen\\\"}\",\r\n        \"answer\": \"c\"\r\n    },\r\n    {\r\n        \"description\": \"Who is known as the 'Father of Computer Science'?\",\r\n        \"options\": \"{\\\"a\\\":\\\"Alan Turing\\\", \\\"b\\\":\\\"Bill Gates\\\", \\\"c\\\":\\\"Steve Jobs\\\", \\\"d\\\":\\\"Tim Berners-Lee\\\"}\",\r\n        \"answer\": \"a\"\r\n    },\r\n    {\r\n        \"description\": \"What is the largest planet in our Solar System?\",\r\n        \"options\": \"{\\\"a\\\":\\\"Earth\\\", \\\"b\\\":\\\"Venus\\\", \\\"c\\\":\\\"Jupiter\\\", \\\"d\\\":\\\"Mars\\\"}\",\r\n        \"answer\": \"c\"\r\n    },\r\n    {\r\n        \"description\": \"What is the square root of 64?\",\r\n        \"options\": \"{\\\"a\\\":\\\"6\\\", \\\"b\\\":\\\"7\\\", \\\"c\\\":\\\"8\\\", \\\"d\\\":\\\"9\\\"}\",\r\n        \"answer\": \"c\"\r\n    }\r\n]\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9090/api/v1/question",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"api",
+								"v1",
+								"question"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all questions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/api/v1/question",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"api",
+								"v1",
+								"question"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users service",
+			"item": [
+				{
+					"name": "register user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"YOLO yolo\",\r\n  \"email\": \"yolo@xmail.com\",\r\n  \"password\": \"yolo123\",\r\n  \"role\": \"STUDENT\" // or TEACHER\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9090/api/v1/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login user",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json()\r",
+									"pm.globals.set(\"springbootToken\",jsonData.token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9090/api/v1/users/login?email=john@xmail.com&password=john123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "john@xmail.com"
+								},
+								{
+									"key": "password",
+									"value": "john123"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/api/v1/users?userId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "results service",
+			"item": [
+				{
+					"name": "submit score",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "uVnxx815xBweBvGNIUth41QGDVcrntX7KmAT/QJzcXurgt69BHvLis7kMbDjwr0q",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/api/v1/results?userId=1&quizId=152&score=20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"api",
+								"v1",
+								"results"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "1"
+								},
+								{
+									"key": "quizId",
+									"value": "152"
+								},
+								{
+									"key": "score",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get result",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/api/v1/results?userId=1&quizId=152",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"api",
+								"v1",
+								"results"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "1"
+								},
+								{
+									"key": "quizId",
+									"value": "152"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
