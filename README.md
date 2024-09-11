@@ -1,5 +1,8 @@
+
 # Getting Started
 
+### Project Architecture
+![Microservices_project_architecture.png](./Microservices_project_architecture.png)
 #### Download maven from [here](https://maven.apache.org/download.cgi?.)
 
 ### Order of execution
@@ -22,6 +25,6 @@ cd into the service
 mvn spring-boot:run
 ```
 
-NOTE: Config server is under development
+NOTE: Config server, Distributed tracing and Circuit breaker is under development
 
 Import the 'quiz microservices project.postman_collection' file provided inside postman to view API endpoints
