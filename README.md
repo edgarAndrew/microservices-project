@@ -26,6 +26,6 @@ cd into the service
 mvn spring-boot:run
 ```
 
-NOTE: Config server, Distributed tracing and Circuit breaker is under development
+NOTE: Distributed tracing and Circuit breaker is under development
 
 Import the 'quiz microservices project.postman_collection' file provided inside postman to view API endpoints
