@@ -3,7 +3,10 @@
 
 ### Project Architecture
 ![Microservices_project_architecture.png](./Microservices_project_architecture.png)
+
+### Pre-requisites
 #### Download maven from [here](https://maven.apache.org/download.cgi?.)
+#### Download config yml file [here](https://www.mediafire.com/file/pxm071if69om5p5/application.yml/file) and place it in 'ConfigServer\src\main\resources'
 
 ### Order of execution
 - Service Discovery
