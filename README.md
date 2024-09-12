@@ -2,11 +2,11 @@
 # Getting Started
 
 ### Project Architecture
-![Microservices_project_architecture.png](./Microservices_project_architecture.png)
+[![architecture.png](https://i.postimg.cc/59qcvbHz/architecture.png)](https://postimg.cc/DmZY3VPf)
 
 ### Pre-requisites
-#### Download maven from [here](https://maven.apache.org/download.cgi?.)
-#### Download config yml file [here](https://www.mediafire.com/file/pxm071if69om5p5/application.yml/file) and place it in 'ConfigServer\src\main\resources'
+- Download maven from [here](https://maven.apache.org/download.cgi?.)
+- Download config yml file from [here](https://www.mediafire.com/file/pxm071if69om5p5/application.yml/file) and place it in 'ConfigServer\src\main\resources'
 
 ### Order of execution
 - Service Discovery
@@ -29,6 +29,6 @@ cd into the service
 mvn spring-boot:run
 ```
 
-NOTE: Distributed tracing and Circuit breaker is under development
+NOTE: Distributed tracing and rate limiter is under development
 
 Import the 'quiz microservices project.postman_collection' file provided inside postman to view API endpoints

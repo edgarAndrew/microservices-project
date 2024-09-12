@@ -89,6 +89,7 @@ public class QuizService {
         Quiz quiz =  quizRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Quiz not found with id " + id));
 
+        // calling question microservice
         List<Question> temp =  quizQuestionsRepository.findByQuizId(id).stream().map(item ->
             questionClient.getQuestion(item.getQuestionId())
         ).toList();

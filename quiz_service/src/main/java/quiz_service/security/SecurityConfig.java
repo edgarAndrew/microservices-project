@@ -33,6 +33,7 @@ public class SecurityConfig {
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((authorizeHttpRequests) ->
                         authorizeHttpRequests
+                                .requestMatchers(new AntPathRequestMatcher("/actuator/**")).permitAll()
                                 .requestMatchers(new AntPathRequestMatcher("/api/v1/quiz/**")).authenticated()
                                 .requestMatchers(new AntPathRequestMatcher("/api/v1/registration/**")).authenticated()
                 )

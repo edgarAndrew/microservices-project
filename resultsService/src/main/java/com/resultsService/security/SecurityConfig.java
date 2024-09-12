@@ -33,6 +33,7 @@ public class SecurityConfig {
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((authorizeHttpRequests) ->
                         authorizeHttpRequests
+                                .requestMatchers(new AntPathRequestMatcher("/actuator/**")).permitAll()
                                 .requestMatchers(new AntPathRequestMatcher("/api/v1/results/**")).authenticated()
                 )
                 .addFilterBefore(new TokenFilter(adminKey, teacherKey,studentKey), UsernamePasswordAuthenticationFilter.class);

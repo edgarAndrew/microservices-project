@@ -1,11 +1,11 @@
 package quiz_service.controller;
 
+import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import quiz_service.DTO.AddQuizQuestionsRequest;
-import quiz_service.DTO.AddQuizRequest;
-import quiz_service.DTO.AddQuizResponse;
-import quiz_service.DTO.GetQuizResponse;
+import quiz_service.DTO.*;
 import quiz_service.model.Quiz;
 import quiz_service.model.QuizQuestions;
 import quiz_service.service.QuizService;
@@ -17,6 +17,9 @@ import java.util.List;
 public class QuizController {
 
     private final QuizService quizService;
+
+    @Autowired
+    private CircuitBreakerRegistry circuitBreakerRegistry;
 
     public QuizController(QuizService quizService){
         this.quizService = quizService;
@@ -40,9 +43,25 @@ public class QuizController {
         return ResponseEntity.ok(quizzes);
     }
 
+    // resilience4j configurations are fetched from the config server
+
     @GetMapping("/{id}")
+    @CircuitBreaker(name="question_service_breaker", fallbackMethod = "questionServiceFallback")
     public ResponseEntity<GetQuizResponse> getQuiz(@PathVariable Integer id) {
         return ResponseEntity.ok(quizService.viewQuiz(id));
+    }
+
+    public ResponseEntity<GenericResponse> questionServiceFallback(Exception e){
+
+        String state = circuitBreakerRegistry.circuitBreaker("question_service_breaker").getState().name();
+        String failureRate = String.valueOf(circuitBreakerRegistry.circuitBreaker("question_service_breaker").getMetrics().getFailureRate());
+        String failureThreshold = String.valueOf(circuitBreakerRegistry.circuitBreaker("question_service_breaker").getCircuitBreakerConfig().getFailureRateThreshold());
+
+        // Include details in the fallback response
+        return ResponseEntity.ok(new GenericResponse(
+                "-> Fallback response due to: " + e.getMessage() + " -> Circuit Breaker State: " + state + "-> Failure Threshold: " + failureThreshold +
+                        "-> Failure Rate: " + failureRate
+        ));
     }
 
     @DeleteMapping
