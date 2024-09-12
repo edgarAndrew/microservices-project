@@ -1,0 +1,18 @@
+server:
+  port: 8086
+spring:
+  application:
+    name: ConfigServer
+  cloud:
+    config:
+      server:
+        git:
+          uri: <Git Repository Containing the application.yml>
+          username: <>
+          password: <Enter personal access token if repo is private>
+          clone-on-start: true
+eureka:
+  instance:
+    client:
+      serverUrl:
+        defaultZone: <URL of the service discovery eureka server>

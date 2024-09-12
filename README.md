@@ -7,6 +7,7 @@
 
 ### Order of execution
 - Service Discovery
+- Config Server
 - Users Service
 - Quiz Service
 - Question Service
