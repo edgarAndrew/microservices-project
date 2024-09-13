@@ -5,7 +5,7 @@
 [![architecture.png](https://i.postimg.cc/59qcvbHz/architecture.png)](https://postimg.cc/DmZY3VPf)
 
 ### ER Diagram
-[![er_diagram.svg](./er_diagram.svg)]
+[![er_diagram.png](./er_diagram.png)]
 
 ### Pre-requisites
 - Download maven from [here](https://maven.apache.org/download.cgi?.)
