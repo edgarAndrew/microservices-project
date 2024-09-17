@@ -7,7 +7,7 @@
 ### ER Diagram
 [![er-diagram.png](https://i.postimg.cc/ncmXLBXp/er-diagram.png)](https://postimg.cc/9rWm84Pn)
 
-### Pre-requisites
+### Pre-requisite
 - Download maven from [here](https://maven.apache.org/download.cgi?.)
 - Download config yml file from [here](https://www.mediafire.com/file/pxm071if69om5p5/application.yml/file) and place it in 'ConfigServer\src\main\resources'
 
