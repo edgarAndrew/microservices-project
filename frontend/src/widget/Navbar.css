@@ -1,0 +1,16 @@
+.navbar-blur {
+    background-color: #007bff; /* Same blue as the sign-in button (Bootstrap btn-primary color) */
+    backdrop-filter: blur(8px); /* Apply blur effect */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for aesthetics */
+  }
+  
+  .navbar-brand {
+    color: white !important; /* Ensure the title text is white */
+  }
+  
+  .navbar-blur .btn-danger {
+    background-color: #dc3545; /* Bootstrap btn-danger red for the Logout button */
+    border-color: #dc3545; /* Match border color to the button background */
+  }
+
+  
