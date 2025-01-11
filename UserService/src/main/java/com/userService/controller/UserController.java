@@ -10,6 +10,8 @@ import com.userService.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,6 +21,7 @@ import java.util.Optional;
 public class UserController {
 
     private final UserService userService;
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     public UserController(UserService userService) {
@@ -44,12 +47,14 @@ public class UserController {
         String role = request.getRole();
 
         userService.registerUser(name, email, password, role);
+        logger.info("user with email:" + email+" , role: "+role+" has been registered");
         return ResponseEntity.ok(new UserRegisterationResponse("user registered")) ;
     }
 
     @PostMapping("/login")
     public ResponseEntity<UserLoginResponse> loginUser(@RequestParam String email, @RequestParam String password) {
         String[] res =  userService.loginUser(email, password).split(",");
+        logger.info("user with email:" + email+" has logged in");
         return ResponseEntity.ok(new UserLoginResponse(res[0],res[1],userService.getUserByEmail(email).getId())) ;
     }
 

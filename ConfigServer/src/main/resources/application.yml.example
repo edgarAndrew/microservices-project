@@ -8,7 +8,7 @@ spring:
       server:
         git:
           uri: <Git Repository Containing the application.yml>
-          username: <>
+          username: <github username>
           password: <Enter personal access token if repo is private>
           clone-on-start: true
 eureka:
@@ -16,3 +16,13 @@ eureka:
     client:
       serverUrl:
         defaultZone: <URL of the service discovery eureka server>
+
+management:
+  tracing:
+    enabled: true
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: <Your zipkin url>/api/v2/spans
+    export: true
